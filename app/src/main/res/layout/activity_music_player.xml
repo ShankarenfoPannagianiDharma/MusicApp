@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="khcy4spi.nottingham.mdpmusicapp.MusicPlayer"
+    android:baselineAligned="false"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TopPartLayouts">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:id="@+id/textView"
+            android:textSize="20sp"
+            android:layout_weight="0.01" />
+
+        <ToggleButton
+            android:layout_width="69dp"
+            android:layout_height="wrap_content"
+            android:text="Loop"
+            android:id="@+id/tgl_looping"
+            android:checked="false"
+            android:textOn="Loop"
+            android:textOff="Loop"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/select_folder"
+            android:id="@+id/btn_browse"
+            android:onClick="switchlist (MusicPlayer)"
+            android:layout_weight="0.00"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:transitionGroup="true"
+        android:visibility="gone"
+        android:id="@+id/ll_folderbrowser">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/txt_folderpath"
+            android:textColor="#000000"
+            android:background="#d6d6d6" />
+
+        <FrameLayout
+            android:visibility="visible"
+            android:id="@+id/fly_folderList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.02">
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/lv_directorylist"
+                android:background="@color/hint_foreground_material_light"
+                android:visibility="visible" />
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+            android:id="@+id/txt_numberofsongs" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:visibility="visible"
+        android:id="@+id/fly_MusicList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.02">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lv_songlist"
+            android:background="@color/hint_foreground_material_light"
+            android:visibility="visible" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.05"
+        android:id="@+id/MusicPlayerLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="4dp"
+            android:text=""
+            android:id="@+id/txt_songtitle"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.01"
+            android:gravity="center_vertical" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sb_songplay" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/ib_left"
+                android:src="@drawable/ic_fast_rewind"
+                android:layout_weight="0.12"
+                android:contentDescription="@string/rewind"
+                android:onClick="prevbutton" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/ib_middle"
+                android:src="@drawable/ic_pause"
+                android:layout_weight="0.12"
+                android:contentDescription="@string/play_pause"
+                android:onClick="ppbutton"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="66dp"
+                android:id="@+id/ib_right"
+                android:src="@drawable/ic_fast_forward"
+                android:layout_weight="0.12"
+                android:contentDescription="@string/fast_forward"
+                android:onClick="ffbutton" />
+        </TableRow>
+    </LinearLayout>
+
+
+</LinearLayout>

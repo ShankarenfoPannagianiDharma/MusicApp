@@ -1,0 +1,11 @@
+<resources>
+    <!-- String hardcoded constants -->
+    <string name="app_name">MDP MusicApp</string>
+    <string name="song_title">Song Title</string>
+    <string name="rewind">Rewind</string>
+    <string name="play_pause">Play/Pause</string>
+    <string name="fast_forward">Fast Forward</string>
+    <string name="select_songs">Songs</string>
+    <string name="select_folder">Folders</string>
+    <string name="Select_songs">sdds</string>
+</resources>

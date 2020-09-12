@@ -1,0 +1,30 @@
+The application will go to the directory that the manufacturer deems as "external storage", which would in most cases mean the SDcard.
+The main activity on create will run a getitem() method to read all files in that directory, place them to an arraylist, then sort the arraylist by their filetype.
+    - Folders go to their own folder file arraylist
+    - MP3 files go to songs arraylist
+    - Other files are not included.
+The two arraylists contains the FileItem object- which is an object with properties of name and path.
+Finally, the arraylists are used in adapters for both listviews- which populates the listviews with items from their respective adapters.
+
+The activity then proceeds to add listeners to the listviews: they function differently, but I placed them in the same code block for easier identification.
+The method for the folders changes the directory to the selected item's path and redoes the getitem() method. It also clears the arraylists beforehand.
+The method for the song view gets the selected item from the listview and passes it to another independent method playsong(FileItem mp3song). Before the song starts
+playing, a different arraylist is used- playlist. This arraylist imports all the songs in the same folder of the one currently playing, and is used as reference for
+the mediaplayer to play the music, so the user can browse freely while the playlist stays the same.
+
+The playsong(FileItem mp3song) is the method that is actually making the song play. It first changes the title text to the song's name from the fileitem passed,
+then tells the mediaplayer to reset() (just in case), read the song file from the path of fileitem, then prepare and start. Lastly, it sets up the seekbar's length.
+
+After the file navigators are added, the seekbar is bound to the mediaplayer service. There's already a method for that, so this one is simple.
+The difficult part is updating the seekbar by seconds. This method adds a thread where it updates the seekbar by second- also using a built-in method.
+
+Then mediaplayer used to play has a listener added that runs when the song ends playing. This listener will reset the mediaplayer, the songplaying state and its title.
+Then, if the toggle button for loop is pressed, it restarts the same song. Otherwise, it continues to the next song.
+
+The button methods are integrated through the xml layout- so these method uses the methodname(View v) format.
+The select songs/folders button simply switches the listview components to be either visible or gone.
+The play/pause button pauses the mediaplayer or  skips the mediaplayer to the stored song played duration.
+The previous button functions only when a song is playing. If it is, it goes to the previous item on the adapter (looping if it is in the end), updates the index of
+current song being played, and then calls the method to play the song, passing the target fileitem.
+Similarly, the next button only functions when a song is playing. It seeks the next item from the adapter (also looping), update the index and passes the target,
+
